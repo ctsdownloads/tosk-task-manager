@@ -33,9 +33,12 @@ jobs:
           ./venv/bin/pip install --upgrade pip
           ./venv/bin/pip install -r requirements.txt
 
+      - name: 📝 Debug: List venv/bin contents
+        run: ls -l venv/bin
+
       - name: 🛠️ Build binary with PyInstaller
         run: |
-          ./venv/bin/pyinstaller --onefile \
+          ./venv/bin/python -m PyInstaller --onefile \
             --add-data "bin/viu:bin" \
             --add-data "tosk.jpg:." \
             main.py
