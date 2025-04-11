@@ -1,0 +1,3 @@
+pyinstaller
+cryptography
+requests
