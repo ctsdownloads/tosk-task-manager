@@ -18,7 +18,7 @@
 If you've already downloaded the `tosk-linux-x86_64` binary to your home directory, run this one-liner to set it up as the `tosk` command:
 
 ```bash
-mkdir -p ~/.local/bin && cp ~/tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc && echo "✅ Tosk installed successfully! Type 'tosk' to get started."
+mkdir -p ~/.local/bin && cp ~/tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk && if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc; fi && source ~/.bashrc && echo -e "\n✅ Tosk installed successfully! Type 'tosk' to get started."
 ```
 ---
 
