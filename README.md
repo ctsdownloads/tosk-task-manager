@@ -143,11 +143,20 @@ deactivate
 Here's what TOsk looks like in action:
 
 > 📸
-![Splashscreen with TOsk](![Splashscreen with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk1.png)
+![Splashscreen with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk1.png)
 
-![Main TOsk Menu](![Main TOsk Menu](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk2.png)
+![Main TOsk Menu](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk2.png)
 
-![Manage Tasks, with TOsk](![Manage Tasks, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk3.png)
+![Manage Tasks, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk3.png)
+
+![Set due date year, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk4.png)
+
+![Set due date month, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk5.png)
+
+![Set due date day, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk6.png)
+
+
+
 
 ---
 
