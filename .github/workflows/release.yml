@@ -1,0 +1,47 @@
+name: Build TOsk Binary
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl tar python3-venv
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install pyinstaller
+
+      - name: Download static viu binary
+        run: |
+          mkdir -p bin
+          curl -L https://github.com/atanunq/viu/releases/latest/download/viu-x86_64-unknown-linux-musl.tar.gz -o /tmp/viu.tar.gz
+          mkdir -p /tmp/viu-install
+          tar -xzf /tmp/viu.tar.gz -C /tmp/viu-install
+          cp /tmp/viu-install/bin/viu bin/
+          chmod +x bin/viu
+
+      - name: Build binary with PyInstaller
+        run: |
+          source venv/bin/activate
+          pyinstaller --onefile --add-data "bin/viu:bin" --add-data "tosk.jpg:." main.py
+
+      - name: Upload built binary to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
