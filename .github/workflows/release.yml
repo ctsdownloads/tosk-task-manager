@@ -38,10 +38,11 @@ jobs:
         run: |
           source venv/bin/activate
           pyinstaller --onefile --add-data "bin/viu:bin" --add-data "tosk.jpg:." main.py
+          mv dist/main dist/tosk-linux-x86_64
 
       - name: Upload built binary to release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/main
+          files: dist/tosk-linux-x86_64
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
