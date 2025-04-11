@@ -49,6 +49,11 @@
 
 ---
 
+## 📘 Changelog
+
+Want to see what’s new? Check out the full [CHANGELOG ➜](./CHANGELOG.md)
+
+
 ## 🚀 Build Instructions (Linux Only)
 
 Clone the repo and follow these steps to build a fully self-contained binary:
