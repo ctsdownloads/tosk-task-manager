@@ -45,6 +45,11 @@ rm ~/tosk-linux-x86_64
 
 ## ✅ Requirements
 
+### For End Users
+* No special requirements! The binary will run on most Linux distros
+* Just 📦 [download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest), make executable, and run
+
+### For Development
 - Python 3.8+
 - `python3-venv`
 - [PyInstaller](https://pyinstaller.org/)
