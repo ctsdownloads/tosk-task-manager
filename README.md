@@ -82,7 +82,7 @@ rm ~/tosk-linux-x86_64
 - 📷 **Splash Screen Support**: Enjoy a terminal-rendered splash image on launch using `viu`.  
 - 🎨 **Colorized UI**: Bold, themed visuals provide a clean, distraction-free interface.  
 - 🔐 **Encrypted Configuration Management**: Securely store sensitive configuration data (e.g., GitHub Token, Encryption Passphrase, GitHub Owner, and GitHub Repository) in an encrypted file (`config.json`), ensuring your credentials remain protected.  
-- 💾 **GitHub Backup & Import**: Automatically encrypt and upload your tasks (e.g., `tasks.json` and `tasks_export.csv`) to your private GitHub repository and seamlessly import them when needed.  
+- 💾 **GitHub Backup & Import**: [Automatically encrypt and upload your tasks](https://github.com/ctsdownloads/tosk-task-manager/blob/main/README.md#-how-to-set-up-a-github-personal-access-token) (e.g., `tasks.json` and `tasks_export.csv`) to your private GitHub repository and seamlessly import them when needed.  
 - 🔒 **Secure Communication**: All interactions with GitHub are transmitted over HTTPS for data security.  
 - 🔄 **Offline Capability**: Core functionality works without an internet connection.  
 - 🐧 **Linux Native**: Optimized for Linux terminal environments (e.g., GNOME Terminal, xterm, etc.).
