@@ -17,13 +17,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y curl tar python3-venv
+
+      - name: Set up virtual environment and install PyInstaller
+        run: |
           python3 -m venv venv
-          source venv/bin/activate
-          pip install pyinstaller
+          ./venv/bin/pip install --upgrade pip
+          ./venv/bin/pip install pyinstaller
 
       - name: Download static viu binary
         run: |
@@ -36,8 +39,10 @@ jobs:
 
       - name: Build binary with PyInstaller
         run: |
-          source venv/bin/activate
-          pyinstaller --onefile --add-data "bin/viu:bin" --add-data "tosk.jpg:." main.py
+          ./venv/bin/pyinstaller --onefile \
+            --add-data "bin/viu:bin" \
+            --add-data "tosk.jpg:." \
+            main.py
           mv dist/main dist/tosk-linux-x86_64
 
       - name: Upload built binary to release
