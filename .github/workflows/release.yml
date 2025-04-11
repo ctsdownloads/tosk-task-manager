@@ -9,26 +9,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install system dependencies
+      - name: 🧱 Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y curl tar python3-venv
 
-      - name: Set up virtual environment and install PyInstaller
+      - name: 🧪 Set up virtual environment and install PyInstaller
         run: |
           python3 -m venv venv
           ./venv/bin/pip install --upgrade pip
           ./venv/bin/pip install pyinstaller
 
-      - name: Download static viu binary
+      - name: 📦 Download static viu binary
         run: |
           mkdir -p bin
           curl -L https://github.com/atanunq/viu/releases/latest/download/viu-x86_64-unknown-linux-musl.tar.gz -o /tmp/viu.tar.gz
@@ -37,15 +37,30 @@ jobs:
           cp /tmp/viu-install/bin/viu bin/
           chmod +x bin/viu
 
-      - name: Build binary with PyInstaller
+      - name: 🛠 Build binary with PyInstaller
         run: |
+          set -e
+          echo "🔍 Verifying files exist..."
+          ls -l main.py bin/viu tosk.jpg
+
+          echo "⚙️ Running PyInstaller..."
           ./venv/bin/pyinstaller --onefile \
             --add-data "bin/viu:bin" \
             --add-data "tosk.jpg:." \
             main.py
-          mv dist/main dist/tosk-linux-x86_64
 
-      - name: Upload built binary to release
+          echo "📁 Contents of dist/:"
+          ls -lh dist || { echo "❌ ERROR: dist/ not found."; exit 1; }
+
+          if [ ! -f dist/main ]; then
+            echo "❌ ERROR: dist/main was not created by PyInstaller."
+            exit 1
+          fi
+
+          mv dist/main dist/tosk-linux-x86_64
+          chmod +x dist/tosk-linux-x86_64
+
+      - name: 🚀 Upload built binary to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: dist/tosk-linux-x86_64
