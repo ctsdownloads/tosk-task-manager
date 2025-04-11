@@ -4,7 +4,7 @@
 
 1. 🔑 Configure Your GitHub Credentials:
    • When you run TOsk for the first time, you'll be prompted to enter:
-       – **GitHub Token**: Your personal access token for GitHub.
+       – **GitHub Token**: [Your personal access token for GitHub](https://github.com/ctsdownloads/tosk-task-manager/tree/main?tab=readme-ov-file#-how-to-set-up-a-github-personal-access-token).
        – **GitHub Owner**: Your GitHub username or organization name.
        – **GitHub Repository**: The name of your private backup repository (e.g., tosk-backups).
    • These values are encrypted and stored in the file `config.json` using your master configuration password.
