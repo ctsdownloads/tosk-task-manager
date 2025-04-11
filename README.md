@@ -59,29 +59,65 @@ rm ~/tosk-linux-x86_64
 
 ## ✨ Features
 
-- 📋 **Grid-based Task Manager**: View and edit tasks in a scrollable, sortable grid. You can also add new tasks in real-time directly within the app.
-- ✅ **Task Completion Tracking**: Toggle tasks as complete/incomplete with the space bar.
-- ⌛ **Estimated Duration Support**: Enter how much time you think you need per task. This helps with planning your day and understanding your workload.
-- 🎯 **Priority System**: Assign priority levels to each task.
-- 📅 **Due Date Picker**: Select due dates via full-screen calendar widgets.
-- 🧮 ***Built-in Status Bar**: Always visible task count and completion summary.
-- 📂 **CSV Import/Export**: Easily back up or transfer tasks to/from CSV files.
-- 📝 **Plaintext Task Import**: Load tasks from simple `.txt` lists using the format:
+- 📋 **Grid-based Task Manager**: View and edit tasks in a scrollable, sortable grid. Add new tasks in real time directly within the app.  
+- ✅ **Task Completion Tracking**: Easily toggle tasks as complete/incomplete with the space bar.  
+- ⌛ **Estimated Duration Support**: Enter an estimated duration for each task to help plan your day and manage your workload.  
+- 🎯 **Priority System**: Assign priority levels to tasks to focus on what matters most.  
+- 📅 **Due Date Picker**: Select due dates using full-screen calendar widgets.  
+- 🧮 **Built-in Status Bar**: Always visible summary showing task count and completion status.  
+- 📂 **CSV Import/Export**: Seamlessly back up or transfer tasks to/from CSV files.  
+- 📝 **Plaintext Task Import**: Load tasks from simple `.txt` lists using the format:  
   ```
-  Task sentence::duration::priority::YYYY-MM-DD
-  ```
+  Task sentence::duration::priority::YYYY-MM-DD`
+  ```  
   For example:
-  ```
+  ```  
   Review pull request::30::2::2025-04-15
   Fix bug in main.py::60::1::2025-04-16
   Draft release notes::45::3::2025-04-18
-  ```
-  Each line represents one task. Fields are optional beyond the sentence. If only a task title is given, it will use default values: duration `60`, priority `1`, and no due date.
-- 🔄 **Sortable Headers**: Clickable headers sort the task list.
-- 📷 **Splash Screen Support**: Show a terminal-rendered image on launch using `viu`.
-- 🎨 **Colorized UI**: Bold, themed visuals with minimal distractions.
-- 🔒 **No Internet Dependency**: Works entirely offline.
-- 🐧 **Linux Native**: Designed to run in most terminal environments (e.g. GNOME Terminal, xterm, etc).
+  ``` 
+  If only a task title is given, default values are used: duration `60`, priority `1`, and no due date.
+   
+- 🔄 **Sortable Headers**: Click headers to sort the task list by various criteria.  
+- 📷 **Splash Screen Support**: Enjoy a terminal-rendered splash image on launch using `viu`.  
+- 🎨 **Colorized UI**: Bold, themed visuals provide a clean, distraction-free interface.  
+- 🔐 **Encrypted Configuration Management**: Securely store sensitive configuration data (e.g., GitHub Token, Encryption Passphrase, GitHub Owner, and GitHub Repository) in an encrypted file (`config.json`), ensuring your credentials remain protected.  
+- 💾 **GitHub Backup & Import**: Automatically encrypt and upload your tasks (e.g., `tasks.json` and `tasks_export.csv`) to your private GitHub repository and seamlessly import them when needed.  
+- 🔒 **Secure Communication**: All interactions with GitHub are transmitted over HTTPS for data security.  
+- 🔄 **Offline Capability**: Core functionality works without an internet connection.  
+- 🐧 **Linux Native**: Optimized for Linux terminal environments (e.g., GNOME Terminal, xterm, etc.).
+
+
+---
+
+---
+
+## 📚 Additional Documentation
+
+For detailed instructions on how to configure GitHub backups and secure your data, please refer to the following guides:
+
+- [🔄 Backup How‑To Guide](docs/backup-howto.md)  
+  Learn how to set up and use the GitHub backup functionality to securely upload your task files.
+
+- [🔒 Security Policy](docs/security-policy.md)  
+  Read about the security measures implemented in TOsk, including encrypted configuration and secure communication.
+
+---
+
+### 🔑 How to Set Up a GitHub Personal Access Token
+
+To enable GitHub backup and restore features, you must create a Personal Access Token:
+
+1. Visit [https://github.com/settings/tokens](https://github.com/settings/tokens).
+2. Click **"Generate new token"** → **"Fine-grained token"**.
+3. Give it a name (e.g. `TOsk Backup Token`) and expiration date.
+4. Select the repository scope where you will store your backups (e.g. `tosk-backups`).
+5. Grant the following permission:
+ - **Contents → Read and write**
+6. Click **Generate token**, then copy the token.
+7. Paste this token into TOsk when prompted for `GitHub Token` on first launch.
+
+> 💡 Your token is encrypted and stored locally in `config.json`, which is itself encrypted using a master password.
 
 ---
 
