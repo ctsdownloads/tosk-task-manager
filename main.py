@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import sys
 import os
@@ -324,16 +325,6 @@ def toggle_task_completion(task_id):
             log_action("TOGGLE_COMPLETION", t)
             break
     save_tasks(tasks)
-
-def show_history_screen(stdscr):
-    if not os.path.exists("task_log.txt"):
-        draw_popup(stdscr, "No history found.")
-        return
-    lines = []
-    with open("task_log.txt", "r") as f:
-        for line in f:
-            lines.append((line.rstrip('\n'), curses.color_pair(5)))
-    scrollable_view(stdscr, lines)
 
 # -------------------------------------------------------------------------
 # IMPORT PLAIN TEXT
@@ -889,7 +880,6 @@ def manage_tasks_menu(stdscr):
             "Export Tasks",
             "Import Tasks",
             "Add Due Date",
-            "Show History",
             "Import Plaintext",
             "Help",
             "Back to Main Menu"
@@ -909,8 +899,6 @@ def manage_tasks_menu(stdscr):
             import_tasks_from_csv(stdscr)
         elif sel == "Add Due Date":
             add_due_date_to_task_screen(stdscr)
-        elif sel == "Show History":
-            show_history_screen(stdscr)
         elif sel == "Import Plaintext":
             import_plaintext_file(stdscr)
         elif sel == "Help":
