@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Explicitly grant write permissions
 
     steps:
       - name: 📆 Checkout repository
@@ -39,10 +41,22 @@ jobs:
             main.py
           mv dist/main dist/tosk-linux-x86_64
 
-      - name: 🚀 Upload TOsk Binary
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/tosk-linux-x86_64
-          tag_name: ${{ github.event.inputs.version }}
+      # Create a Git tag first to ensure it exists
+      - name: Create Git tag
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a ${{ github.event.inputs.version }} -m "Release ${{ github.event.inputs.version }}"
+          git push origin ${{ github.event.inputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Use an alternative GitHub release action
+      - name: 🚀 Upload TOsk Binary to Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "dist/tosk-linux-x86_64"
+          tag: ${{ github.event.inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          generateReleaseNotes: true
