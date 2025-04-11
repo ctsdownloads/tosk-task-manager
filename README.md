@@ -45,7 +45,7 @@ rm ~/tosk-linux-x86_64
 
 ### For End Users
 * No special requirements! The binary will run on most Linux distros
-* Just 📦 [download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest), make executable, and run
+* Just 📦 [download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest), and [run this command](https://github.com/ctsdownloads/tosk-task-manager/tree/main?tab=readme-ov-file#-tosk--a-terminal-task-planner)
 
 ### For Development
 - Python 3.8+
