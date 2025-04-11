@@ -1,34 +1,37 @@
-name: Build TOsk Binary
+name: Build and Release TOsk
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.3)'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 📆 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: 🐳 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install system dependencies
+      - name: 🍎 Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-venv
 
-      - name: Set up virtual environment and install PyInstaller
+      - name: ✨ Set up virtual environment and install PyInstaller
         run: |
           python3 -m venv venv
           ./venv/bin/pip install --upgrade pip
           ./venv/bin/pip install pyinstaller
 
-      - name: Build binary with PyInstaller
+      - name: 🛠️ Build binary with PyInstaller
         run: |
           ./venv/bin/pyinstaller --onefile \
             --add-data "bin/viu:bin" \
@@ -36,9 +39,12 @@ jobs:
             main.py
           mv dist/main dist/tosk-linux-x86_64
 
-      - name: Upload built binary to release
+      - name: 🔗 Create GitHub Release and Upload Binary
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ github.event.inputs.version }}
+          name: TOsk ${{ github.event.inputs.version }}
+          body_path: CHANGELOG.md
           files: dist/tosk-linux-x86_64
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
