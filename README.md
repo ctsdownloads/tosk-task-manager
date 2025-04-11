@@ -22,6 +22,26 @@ mkdir -p ~/.local/bin && cp ~/tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/
 ```
 ---
 
+## 🗑️ Uninstallation
+
+To remove Tosk from your system:
+
+```bash
+# Remove the binary
+rm ~/.local/bin/tosk
+```
+
+# Optional: Remove the downloaded binary if you still have it
+```
+rm ~/tosk-linux-x86_64
+```
+
+- Optional: If you don't have any other programs in ~/.local/bin
+- you can remove the directory and PATH addition
+- rm -rf ~/.local/bin
+- Then edit ~/.bashrc to remove the PATH addition line
+
+---
 
 ## ✅ Requirements
 
