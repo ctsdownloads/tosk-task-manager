@@ -62,11 +62,11 @@ rm ~/tosk-linux-x86_64
 ## ✨ Features
 
 - 📋 **Grid-based Task Manager**: View and edit tasks in a scrollable, sortable grid. You can also add new tasks in real-time directly within the app.
-- ✅ **Task Completion Tracking**: Toggle tasks as complete/incomplete.
-- ⌛ **Estimated Duration Support**: Add expected duration per task.
+- ✅ **Task Completion Tracking**: Toggle tasks as complete/incomplete with the space bar.
+- ⌛ **Estimated Duration Support**: Enter how much time you think you need per task. This helps with planning your day and understanding your workload.
 - 🎯 **Priority System**: Assign priority levels to each task.
 - 📅 **Due Date Picker**: Select due dates via full-screen calendar widgets.
-- 🧮 **Built-in Status Bar**: Always visible task count and completion summary.
+- 🧮 ***Built-in Status Bar**: Always visible task count and completion summary.
 - 📂 **CSV Import/Export**: Easily back up or transfer tasks to/from CSV files.
 - 📝 **Plaintext Task Import**: Load tasks from simple `.txt` lists using the format:
   ```
