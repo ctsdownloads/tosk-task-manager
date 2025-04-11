@@ -77,7 +77,6 @@ rm ~/tosk-linux-x86_64
   Draft release notes::45::3::2025-04-18
   ```
   Each line represents one task. Fields are optional beyond the sentence. If only a task title is given, it will use default values: duration `60`, priority `1`, and no due date.
-- 🧾 **History Log**: Tracks edits and completions with timestamps.
 - 🔄 **Sortable Headers**: Clickable headers sort the task list.
 - 📷 **Splash Screen Support**: Show a terminal-rendered image on launch using `viu`.
 - 🎨 **Colorized UI**: Bold, themed visuals with minimal distractions.
