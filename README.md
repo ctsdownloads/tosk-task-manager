@@ -39,8 +39,6 @@ rm ~/tosk-linux-x86_64
 - Optional: If you don't have any other programs in ~/.local/bin
 - you can remove the directory and PATH addition
 - rm -rf ~/.local/bin
-- Then edit ~/.bashrc to remove the PATH addition line
-
 ---
 
 ## ✅ Requirements
