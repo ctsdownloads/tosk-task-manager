@@ -138,11 +138,16 @@ deactivate
 
 ---
 
-## 🗼 Screenshot
+## 🗼 Screenshots
 
 Here's what TOsk looks like in action:
 
-> 📸 *(Add terminal screenshot showing the menu or grid interface here — for example, using `gnome-screenshot -w` or `escrotum`.)*
+> 📸
+![Splashscreen with TOsk](![Splashscreen with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk1.png)
+
+![Main TOsk Menu](![Main TOsk Menu](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk2.png)
+
+![Manage Tasks, with TOsk](![Manage Tasks, with TOsk](https://raw.githubusercontent.com/ctsdownloads/tosk-task-manager/refs/heads/main/images/tosk3.png)
 
 ---
 
