@@ -27,11 +27,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-venv
 
-      - name: ✨ Set up virtual environment and install PyInstaller
+      - name: ✨ Set up virtual environment and install dependencies
         run: |
           python3 -m venv venv
           ./venv/bin/pip install --upgrade pip
-          ./venv/bin/pip install pyinstaller
+          ./venv/bin/pip install -r requirements.txt
 
       - name: 🛠️ Build binary with PyInstaller
         run: |
@@ -41,7 +41,6 @@ jobs:
             main.py
           mv dist/main dist/tosk-linux-x86_64
 
-      # Create a Git tag first to ensure it exists
       - name: Create Git tag
         run: |
           git config --local user.email "action@github.com"
@@ -51,7 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Use an alternative GitHub release action
       - name: 🚀 Upload TOsk Binary to Release
         uses: ncipollo/release-action@v1
         with:
