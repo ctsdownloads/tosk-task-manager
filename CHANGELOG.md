@@ -6,6 +6,42 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+# Changelog Update
+
+## Release Notes for v2.2 – 4-11-25
+
+- **Configuration Management**
+  - Added persistent, encrypted configuration support.
+    - The application now stores required values (GitHub Token, Encryption Passphrase, GitHub Owner, GitHub Repository) in a file (`config.json`) encrypted using AES‑GCM.
+    - On first run, users are prompted for these values and for a master configuration password to encrypt the config file.
+    - On subsequent runs, users only need to enter the master configuration password to load the configuration.
+
+- **Encryption and Decryption**
+  - Integrated AES‑GCM‑based encryption for both file contents (tasks backups) and configuration data.
+  - Updated encryption/decryption functions to handle both backup files and the configuration file.
+
+- **GitHub Backup & Import**
+  - Implemented GitHub backup functionality:
+    - When backing up tasks (e.g., `tasks.json` and optionally `tasks_export.csv`), files are encrypted (if an encryption passphrase is provided), base64‑encoded, and uploaded to the specified GitHub repository under the `/backups/` directory.
+  - Added GitHub import functionality:
+    - On import, the application downloads the encrypted backup file from GitHub, decodes and decrypts it locally using the provided passphrase so that tasks are available as plain‑text JSON.
+
+- **Help Section Update**
+  - Completely refreshed the help screen to include up‑to‑date instructions for all application functions:
+    - **General Controls:** Navigation with arrow keys or j/k/h/l; Enter to select; q or ESC to exit.
+    - **Main Menu Options:** Descriptions for “View Tasks,” “Manage Tasks,” “Help,” and “Exit.”
+    - **Manage Tasks Submenu:** Detailed explanations for all task management functions including adding, editing, deleting tasks; CSV import/export; calendar-based due date selection; plaintext import; GitHub backup and import.
+    - **Calendar Controls:** Instructions for selecting month, day, and year.
+    - **Configuration & Security:** Description of how configuration values are handled, encrypted, and stored, plus GitHub communication over HTTPS.
+    - **GitHub Backup & Import:** Specific details on how backups are encrypted before upload and decrypted on import.
+
+- **User Interface Improvements**
+  - Consolidated and deduplicated all curses‑UI helper functions (menu selection, popups, calendar grids, etc.) ensuring that functions such as `selectable_menu` are defined only once and are in scope.
+  - Updated the help screen and other UI elements to reflect the latest set of features and improvements.
+
+
+---
+
 ## Release Notes for v2.1 – 2025-04-10
 
 Changes
