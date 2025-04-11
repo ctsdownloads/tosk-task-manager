@@ -49,6 +49,7 @@ rm ~/tosk-linux-x86_64
 - `python3-venv`
 - [PyInstaller](https://pyinstaller.org/)
 - Static Linux build of [`viu`](https://github.com/atanunq/viu)
+- Will run on most Linux distros!
 
 
 ---
