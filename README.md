@@ -11,12 +11,14 @@
 
 ---
 
+
 ## ✅ Requirements
 
 - Python 3.8+
 - `python3-venv`
 - [PyInstaller](https://pyinstaller.org/)
 - Static Linux build of [`viu`](https://github.com/atanunq/viu)
+
 
 ---
 
