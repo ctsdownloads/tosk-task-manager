@@ -14,29 +14,29 @@ jobs:
       contents: write  # Explicitly grant write permissions
 
     steps:
-      - name: 📆 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🐳 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: 🍎 Install system dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-venv
 
-      - name: ✨ Set up virtual environment and install dependencies
+      - name: Set up virtual environment and install dependencies
         run: |
           python3 -m venv venv
           ./venv/bin/pip install --upgrade pip
           ./venv/bin/pip install -r requirements.txt
 
-      - name: 📝 Debug: List venv/bin contents
+      - name: Debug: List venv/bin contents
         run: ls -l venv/bin
 
-      - name: 🛠️ Build binary with PyInstaller
+      - name: Build binary with PyInstaller
         run: |
           ./venv/bin/python -m PyInstaller --onefile \
             --add-data "bin/viu:bin" \
@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🚀 Upload TOsk Binary to Release
+      - name: Upload TOsk Binary to Release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/tosk-linux-x86_64"
