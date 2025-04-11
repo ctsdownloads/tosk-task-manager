@@ -6,6 +6,43 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## Release Notes for v2.1 – 2025-04-10
+
+Changes
+
+    Removed History Feature: Simplified the application by removing the history tracking functionality
+    Improved overall performance and reduced memory usage
+    Streamlined user experience with a more focused interface
+
+Binary Information
+
+    Built with PyInstaller for Linux x86_64
+    Includes all necessary dependencies
+    Compatible with previous data formats
+
+This release focuses on simplification by removing the history feature, resulting in a more lightweight and focused application.
+
+---
+
+## Release Notes – 2025-04-10
+
+Bug Fixes & Improvements
+
+    Fixed workflow configuration for GitHub Actions release process
+    Resolved permission issues for automated binary publishing
+    Streamlined build and release pipeline
+    Ironed out various deployment wrinkles
+
+Binary Information
+
+    Built with PyInstaller for Linux x86_64
+    Includes all necessary dependencies
+    Ready for production use
+
+Thank you for your patience while we were ironing out some deployment issues. This release provides a stable binary that should work smoothly on Linux systems.
+
+---
+
 ## [1.0.0] – 2025-04-10
 
 ### ✨ Added
