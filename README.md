@@ -209,6 +209,9 @@ A precompiled binary is available for **Linux x86_64** systems. This allows you 
    ```bash
    ./tosk-linux-x86_64
    ```
+or...
+
+>You can install it, make it executable and anything else you need by simply [clicking here](https://github.com/ctsdownloads/tosk-task-manager/tree/main?tab=readme-ov-file#-tosk--a-terminal-task-planner)
 
 ### ⚠️ Requirements & Notes
 
