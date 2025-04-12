@@ -313,7 +313,7 @@ Add this line:
 
 This makes it easy to re-enable the splash screen later by setting the value to **false**.
 
-### Binary version - Best Method
+### 3. Binary version - Best Method
 
 Use this in your code:
 
