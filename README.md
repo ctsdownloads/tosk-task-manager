@@ -315,21 +315,7 @@ This makes it easy to re-enable the splash screen later by setting the value to 
 
 ### 3. Binary version - Best Method
 
-Use this in your code:
-
-config = prompt_for_config()
-if not config.get("DISABLE_SPLASH", False):
-    show_splash()
-
-Then:
-
-    Distribute your binary as-is.
-
-    Include a sample config.json or document the flag.
-
-    Let users choose whether the splash shows or not.
-
----
+Best to [build yourself](https://github.com/ctsdownloads/tosk-task-manager?tab=readme-ov-file#-build-instructions-linux-only) if you want this level of control.
 
 ## ❗ Note
 
