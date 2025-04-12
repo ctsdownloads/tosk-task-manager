@@ -263,21 +263,57 @@ You can also [build from source](#-build-instructions-linux-only) or run the Pyt
 
 ---
 
-## 🙈 How to Disable the Splash Screen
+# 🙈 How to Disable the Splash Screen
 
 While Sci-Fi fans may find the splash image of TOsk entertaining, others may prefer a faster startup experience or a cleaner launch. If you'd rather remove the image of the application's namesake, here's how to disable it:
 
-1. Open `main.py` in a text editor.
-2. Locate this line:
-   ```python
-   subprocess.call([resource_path("bin/viu"), resource_path("tosk.jpg")])
-   ```
-3. Replace it with:
-   ```python
-   pass  # Splash screen disabled
-   ```
+## 🛠 Option 1: Quick & Safe
 
-This will skip the splash entirely and launch straight into the planner. Once disabled, you can also safely delete the `tosk.jpg` image from the project folder if it's no longer needed.
+1. Open the main Python file (`tosk.py` or equivalent).
+2. Scroll to the very bottom of the file.
+3. Find this line:
+
+```
+    show_splash()
+```
+
+4. Comment it out to skip the splash on launch:
+
+```
+   # show_splash()  # Disabled splash screen
+```
+
+This will prevent the splash screen from displaying while keeping the function intact for future use.
+
+---
+
+## ⚙️ Option 2: Make It Configurable
+
+If you'd like to toggle the splash screen without editing the script each time, you can make it configurable:
+
+### 1. Modify the Code
+
+Replace this:
+
+    show_splash()
+
+With this:
+
+    config = prompt_for_config()
+    if not config.get("DISABLE_SPLASH", False):
+        show_splash()
+
+### 2. Update Your **config.json**
+
+Add this line:
+
+    {
+      "DISABLE_SPLASH": true
+    }
+
+This makes it easy to re-enable the splash screen later by setting the value to **false**.
+
+
 
 ---
 
