@@ -10,34 +10,6 @@
 
 ---
 
-## 📥 Installation
-
-### Quick Install (once downloaded to your home directory)
-
-If you've already downloaded the `tosk-linux-x86_64` binary to your home directory, run this:
-
-```bash
-mkdir -p ~/.local/bin && cp ~/tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk && if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc; fi && source ~/.bashrc && echo -e "\n✅ Tosk installed successfully! Type 'tosk' to get started."
-```
-
----
-
-## 🗑️ Uninstallation
-
-To remove TOsk:
-
-```bash
-rm ~/.local/bin/tosk
-```
-
-Optionally, remove the downloaded binary:
-
-```bash
-rm ~/tosk-linux-x86_64
-```
-
----
-
 ## ✅ Requirements
 
 ### For End Users
@@ -188,9 +160,7 @@ deactivate
 
 ---
 
-## 📆 Prebuilt Binary (Linux Only)
-
-### ✅ How to Use
+### 📥 Installation
 
 1. Download from [Releases](https://github.com/ctsdownloads/tosk-task-manager/releases/latest)
 2. Make it executable:
@@ -207,7 +177,21 @@ Or install it permanently:
 mkdir -p ~/.local/bin && cp tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk
 ```
 
-4. Need to [remove it once installed](https://github.com/ctsdownloads/tosk-task-manager/blob/main/README.md#%EF%B8%8F-uninstallation)?
+## 🗑️ Uninstallation
+
+To remove TOsk if it is installed:
+
+```bash
+rm ~/.local/bin/tosk
+```
+
+Optionally, remove the downloaded binary:
+
+```bash
+rm ~/tosk-linux-x86_64
+```
+
+---
 
 ### ⚠️ Notes
 
