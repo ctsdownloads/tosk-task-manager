@@ -208,7 +208,7 @@ Or install it permanently:
 mkdir -p ~/.local/bin && cp tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk
 ```
 
-4. Need to [remove it once installed](#uninstallation)?
+4. Need to [remove it once installed](https://github.com/ctsdownloads/tosk-task-manager/blob/main/README.md#%EF%B8%8F-uninstallation)?
 
 ### ⚠️ Notes
 
