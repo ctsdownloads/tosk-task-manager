@@ -918,39 +918,58 @@ def selectable_tasks_view(stdscr):
         stdscr.clear()
         h, w = stdscr.getmaxyx()
         title_str = "Task List (Selectable Grid) - arrow=move; e=edit; d=delete; space=toggle; ?=help; q=quit"
-        stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
-        stdscr.addstr(0, 0, title_str)
-        stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
+        try:
+            stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
+            stdscr.addnstr(0, 0, title_str, w - 1)
+            stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
+        except curses.error:
+            pass
+
+        # Draw headers
         for c in range(n_cols):
             x = 2 + sum(col_w[:c]) + 3 * c
-            if sel_row == 0 and sel_col == c:
-                stdscr.attron(curses.color_pair(6))
-                stdscr.addstr(2, x, data[0][c].ljust(col_w[c]))
-                stdscr.attroff(curses.color_pair(6))
-            else:
-                stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
-                stdscr.addstr(2, x, data[0][c].ljust(col_w[c]))
-                stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
-        stdscr.attron(curses.color_pair(5))
-        stdscr.addstr(3, 2, "-" * (sum(col_w) + 3 * (n_cols - 1)))
-        stdscr.attroff(curses.color_pair(5))
+            try:
+                if sel_row == 0 and sel_col == c:
+                    stdscr.attron(curses.color_pair(6))
+                    stdscr.addnstr(2, x, data[0][c].ljust(col_w[c]), col_w[c])
+                    stdscr.attroff(curses.color_pair(6))
+                else:
+                    stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
+                    stdscr.addnstr(2, x, data[0][c].ljust(col_w[c]), col_w[c])
+                    stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
+            except curses.error:
+                pass
+
+        # Separator
+        try:
+            stdscr.attron(curses.color_pair(5))
+            stdscr.addnstr(3, 2, "-" * (sum(col_w) + 3 * (n_cols - 1)), w - 3)
+            stdscr.attroff(curses.color_pair(5))
+        except curses.error:
+            pass
+
+        # Draw data rows
         for r in range(1, n_rows):
             y_pos = 4 + (r - 1)
             x_pos = 2
             for c in range(n_cols):
                 cell = data[r][c]
                 disp = cell if len(cell) <= col_w[c] else cell[:col_w[c] - 3] + "..."
-                if r == sel_row and c == sel_col:
-                    stdscr.attron(curses.color_pair(6))
-                    stdscr.addstr(y_pos, x_pos, disp.ljust(col_w[c]))
-                    stdscr.attroff(curses.color_pair(6))
-                else:
-                    stdscr.attron(curses.color_pair(5))
-                    stdscr.addstr(y_pos, x_pos, disp.ljust(col_w[c]))
-                    stdscr.attroff(curses.color_pair(5))
+                try:
+                    if r == sel_row and c == sel_col:
+                        stdscr.attron(curses.color_pair(6))
+                        stdscr.addnstr(y_pos, x_pos, disp.ljust(col_w[c]), col_w[c])
+                        stdscr.attroff(curses.color_pair(6))
+                    else:
+                        stdscr.attron(curses.color_pair(5))
+                        stdscr.addnstr(y_pos, x_pos, disp.ljust(col_w[c]), col_w[c])
+                        stdscr.attroff(curses.color_pair(5))
+                except curses.error:
+                    pass
                 x_pos += col_w[c] + 3
         update_status_bar(stdscr)
         stdscr.refresh()
+        
         k = stdscr.getch()
         if k in [ord('q'), 27]:
             break
@@ -968,6 +987,7 @@ def selectable_tasks_view(stdscr):
                 sel_col += 1
         elif k in [10, 13]:
             if sel_row == 0:
+                # Sort tasks by the column selected
                 if sel_col == 0:
                     tasks = sorted(tasks, key=lambda x: int(x.get("id", 0)))
                 elif sel_col == 1:
@@ -994,9 +1014,7 @@ def selectable_tasks_view(stdscr):
                 sel_row, sel_col = 0, 1
             else:
                 if sel_col == 1:
-                    content = data[sel_row][sel_col]
-                    if not content:
-                        content = "[empty]"
+                    content = data[sel_row][sel_col] or "[empty]"
                     draw_popup(stdscr, content)
         elif k == ord(' '):
             if sel_row > 0:
@@ -1026,21 +1044,36 @@ def selectable_tasks_view(stdscr):
                         break
                 if chosen:
                     stdscr.clear()
-                    stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
-                    stdscr.addstr(0, 0, "Direct Edit Task:")
-                    stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
-                    stdscr.attron(curses.color_pair(5))
-                    stdscr.addstr(1, 0, f"(Current Title: {chosen['title']})")
-                    stdscr.attroff(curses.color_pair(5))
+                    try:
+                        stdscr.attron(curses.color_pair(2) | curses.A_BOLD)
+                        stdscr.addnstr(0, 0, "Direct Edit Task:", w - 1)
+                        stdscr.attroff(curses.color_pair(2) | curses.A_BOLD)
+                    except curses.error:
+                        pass
+                    try:
+                        stdscr.attron(curses.color_pair(5))
+                        stdscr.addnstr(1, 0, f"(Current Title: {chosen['title']})", w - 1)
+                        stdscr.attroff(curses.color_pair(5))
+                    except curses.error:
+                        pass
                     hh, ww = stdscr.getmaxyx()
                     tw = ww - 4
                     new_title = edit_field(stdscr, 2, 0, tw, chosen["title"])
-                    stdscr.addstr(4, 0, f"(Duration e.g.80: {chosen.get('duration', 60)})", curses.color_pair(5))
+                    try:
+                        stdscr.addnstr(4, 0, f"(Duration e.g.80: {chosen.get('duration', 60)})", w - 1, curses.color_pair(5))
+                    except curses.error:
+                        pass
                     new_dur = edit_field(stdscr, 5, 0, 10, str(chosen.get("duration", 60)))
-                    stdscr.addstr(7, 0, f"(Priority (1=highest), e.g.3: {chosen.get('priority', 1)})", curses.color_pair(5))
+                    try:
+                        stdscr.addnstr(7, 0, f"(Priority (1=highest), e.g.3: {chosen.get('priority', 1)})", w - 1, curses.color_pair(5))
+                    except curses.error:
+                        pass
                     new_pri = edit_field(stdscr, 8, 0, 10, str(chosen.get("priority", 1)))
                     update_task(chosen["id"], new_title, new_dur, new_pri)
-                    stdscr.addstr(10, 0, "Task updated. Press any key...", curses.color_pair(2))
+                    try:
+                        stdscr.addnstr(10, 0, "Task updated. Press any key...", w - 1, curses.color_pair(2))
+                    except curses.error:
+                        pass
                     stdscr.refresh()
                     stdscr.getch()
                     tasks = load_tasks()
@@ -1081,6 +1114,7 @@ def selectable_tasks_view(stdscr):
         sel_row = max(0, min(sel_row, n_rows - 1))
         sel_col = max(0, min(sel_col, n_cols - 1))
         update_status_bar(stdscr)
+
 
 def manage_tasks_menu(stdscr):
     while True:
