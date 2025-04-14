@@ -1,10 +1,46 @@
 # 📜 CHANGELOG
 
+# Changelog Update
+
 All notable changes to this project will be documented in this file.
 
 ---
+## Release Notes for v2.2 – 4-14-25
 
-# Changelog Update
+**v2.3 – 4-14-25**
+
+New Features & Improvements
+
+### Robust Error Handling in UI
+
+- Modified curses UI functions to wrap addnstr calls in try/except blocks. This prevents crashes when strings overflow the terminal boundaries or when the window dimensions are too small. Users will now have a more stable experience when viewing or editing task lists, especially on environments with limited terminal sizes.
+
+###  Improved GitHub API Interaction
+
+- Enhanced URL safety in GitHub backup and import functions by adding proper URL encoding (using urllib.parse.quote) for repository file paths. This change ensures that any special characters or spaces in paths do not trigger Python errors during API calls.
+
+### Enhanced Stability Post-Import
+
+- Fixed an issue where importing tasks from GitHub could lead to terminal rendering errors when subsequently viewing the task list. The updated error handling ensures that the UI recovers gracefully after the data import process.
+
+#### Refined Build Process on GitHub Actions
+
+- Updated the GitHub Actions workflow to build the binary using a controlled Ubuntu environment with PyInstaller. This provides a more consistent release build that replicates the stable behavior seen in the original binary releases.
+
+- The workflow includes steps to check out the repository, set up Python and its dependencies, build the binary with the correct data-inclusions, create a Git tag, and upload the binary as a new release.
+
+### Bug Fixes
+
+####Curses Error Fix
+
+- Resolved the curses.error from `addnstr() returned ERR issue which was encountered locally after importing tasks from GitHub. This fix prevents unexpected crashes and improves overall UI resilience.
+
+#### General UI Enhancements
+
+- Minor adjustments to the task list display logic to ensure proper text alignment and truncation, reducing the likelihood of content overflow errors.
+
+
+---
 
 ## Release Notes for v2.2 – 4-11-25
 
