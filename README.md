@@ -208,6 +208,8 @@ Or install it permanently:
 mkdir -p ~/.local/bin && cp tosk-linux-x86_64 ~/.local/bin/tosk && chmod +x ~/.local/bin/tosk
 ```
 
+4. Need to [remove it once installed](#uninstallation)?
+
 ### ⚠️ Notes
 
 - Requires Linux (64-bit)
