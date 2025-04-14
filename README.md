@@ -6,8 +6,7 @@
 
 `TOsk` is a terminal-based task planner built with `curses` in Python. It features a splash screen, grid-based task UI, CSV import/export, due dates, history logs, and more — all inside a beautiful fullscreen TUI.
 
-> 🔪 For users who just want it to work without setup, a prebuilt binary is available under [📆 Prebuilt Binary (Linux Only)](#-prebuilt-binary-linux-only).  
-> 📦 [Download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest)
+> 📦 For users who just want it to work without setup, a prebuilt binary is available under [Prebuilt Binary (Linux Only)](#-prebuilt-binary-linux-only). [Download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest)
 
 ---
 
