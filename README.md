@@ -14,7 +14,8 @@
 
 ### For End Users
 - No special requirements!
-- Just 📦 [download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest) and make it executable (chmod +x tosk-linux-x86_64 , then run it.
+- 📂 Just [download TOsk for Linux](https://github.com/ctsdownloads/tosk-task-manager/releases/latest) and make it executable (chmod +x tosk-linux-x86_64 , then run it.
+- 📦 Rather [install it](#-installation) as tosk in your terminal?
 
 ### For Development
 - Python 3.8+
