@@ -272,26 +272,45 @@ def selectable_menu(stdscr, title, options, start_row=0, error_msg=""):
     while True:
         stdscr.clear()
         h, w = stdscr.getmaxyx()
+        # Draw the title centered.
         stdscr.attron(curses.color_pair(1) | curses.A_BOLD)
         tx = max(0, (w - len(title)) // 2)
-        stdscr.addstr(start_row, tx, title)
+        if start_row < h:
+            stdscr.addnstr(start_row, tx, title, w - tx)
         stdscr.attroff(curses.color_pair(1) | curses.A_BOLD)
         row = start_row + 2
+
+        # Draw each menu option only if there's space.
         for idx, opt in enumerate(options):
+            y = row + idx
+            if y >= h:
+                break  # no space to draw further options
             x = max(0, (w - len(opt)) // 2)
-            if idx == cur:
-                stdscr.attron(curses.color_pair(6))
-                stdscr.addstr(row + idx, x, opt)
-                stdscr.attroff(curses.color_pair(6))
-            else:
-                stdscr.attron(curses.color_pair(5))
-                stdscr.addstr(row + idx, x, opt)
-                stdscr.attroff(curses.color_pair(5))
+            display_length = max(0, w - x)
+            try:
+                if idx == cur:
+                    stdscr.attron(curses.color_pair(6))
+                    stdscr.addnstr(y, x, opt, display_length)
+                    stdscr.attroff(curses.color_pair(6))
+                else:
+                    stdscr.attron(curses.color_pair(5))
+                    stdscr.addnstr(y, x, opt, display_length)
+                    stdscr.attroff(curses.color_pair(5))
+            except curses.error:
+                pass
+
+        # Draw error message if provided and if there's space.
         if error_msg:
-            stdscr.attron(curses.color_pair(4))
-            err_x = max(0, (w - len(error_msg)) // 2)
-            stdscr.addstr(row + len(options) + 2, err_x, error_msg)
-            stdscr.attroff(curses.color_pair(4))
+            err_y = row + len(options) + 2
+            if err_y < h:
+                err_x = max(0, (w - len(error_msg)) // 2)
+                try:
+                    stdscr.attron(curses.color_pair(4))
+                    stdscr.addnstr(err_y, err_x, error_msg, max(0, w - err_x))
+                    stdscr.attroff(curses.color_pair(4))
+                except curses.error:
+                    pass
+
         stdscr.refresh()
         k = stdscr.getch()
         if k in [curses.KEY_UP, ord('k')]:
@@ -300,6 +319,7 @@ def selectable_menu(stdscr, title, options, start_row=0, error_msg=""):
             cur = (cur + 1) % len(options)
         elif k in [10, 13]:
             return options[cur]
+
 
 def selectable_menu_index(stdscr, title, options, start_row=0, error_msg=""):
     chosen = selectable_menu(stdscr, title, options, start_row, error_msg)
