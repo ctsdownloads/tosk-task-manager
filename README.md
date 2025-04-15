@@ -57,7 +57,7 @@
 ## 📚 Additional Documentation
 
 - [🔄 Backup How‑To Guide](docs/backup-howto.md)  
-- [🔒 Security Policy](docs/security-policy.md)
+- [🔒 [Security Policy](docs/security-policy.md#security-and-token-access-explained)
 
 ---
 
