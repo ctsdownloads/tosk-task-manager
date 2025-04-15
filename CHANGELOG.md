@@ -5,6 +5,15 @@
 All notable changes to this project will be documented in this file.
 
 ---
+## Release Notes for v2.3.1 – 4-15-25
+
+**v2.3.1 – 4-15-25**
+
+UI Rendering in Curses:
+
+Fixed an issue in the selectable_menu function where attempts to print menu options or error messages beyond the terminal’s boundaries caused a curses error. The patch now adds boundary checks for row positions and uses addnstr() (with calculated display lengths) to ensure text fits within the available screen width. This prevents "addwstr() returned ERR" errors when the terminal window is too narrow.
+
+---
 ## Release Notes for v2.2 – 4-14-25
 
 **v2.3 – 4-14-25**
