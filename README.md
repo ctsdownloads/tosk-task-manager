@@ -47,7 +47,7 @@
 - 📷 **Splash Screen Support**: Terminal image with `viu`.
 - 🎨 **Colorized UI**: Themed, bold visuals.
 - 🔐 **Encrypted Configuration**: Securely store sensitive configuration data (e.g., GitHub Token, Encryption Passphrase, GitHub Owner, and GitHub Repository) in an encrypted file (config.json), ensuring your credentials remain protected.
-- 💾 **GitHub Backup & Import**: [See guide](#-how-to-set-up-a-github-personal-access-token)
+- 💾 **GitHub Backup & Import**: [See guide](https://github.com/ctsdownloads/tosk-task-manager/blob/main/docs/backup-howto.md)
 - 🔒 **Secure Communication**: All interactions with GitHub are transmitted over HTTPS for data security.
 - 🔄 **Offline Capability**: Core functionality works without an internet connection.
 - 🐧 **Linux Native**: Optimized for Linux terminal environments (e.g., GNOME Terminal, xterm, etc.).
