@@ -25,10 +25,10 @@ When a token expires, just create a new GitHub token and enter it into the app. 
 
 In short:
 
-    🔁 You can always get a new token.
+🔁 You can always get a new token.
 
-    🔐 But your encryption passphrase is what truly protects your data.
+🔐 But your encryption passphrase is what truly protects your data.
 
-    ✅ Your task data is still safe and usable even if the token changes.
+✅ Your task data is still safe and usable even if the token changes.
  
 
