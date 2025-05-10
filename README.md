@@ -204,7 +204,7 @@ rm ~/tosk-linux-x86_64
 
 ## 🙈 How to Disable the Splash Screen
 
-### 🛠 Option 1: Quick & Safe
+### 🛠 Option 1: Quick & Safe (If you build it, not using the binary 
 
 1. Open `tosk.py`
 2. Scroll to the bottom
